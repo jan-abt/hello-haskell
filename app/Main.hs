@@ -1,6 +1,15 @@
-module Main
-    (main) where
+module Main where 
 
-main :: IO ()
+import qualified Lib (sayHello)
+import System.IO
 
-main = undefined
+main :: IO () 
+main = do
+  hSetBuffering stdout NoBuffering
+  putStr "Please input your name (using library specified in this project): "
+  name <- getLine 
+  Lib.sayHello name
+
+-- do syntax, is syntactic sugar, 
+-- used inside functions that return an IO action, here of unit,
+-- in order to sequence side effects in a convenient syntax.
